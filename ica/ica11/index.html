@@ -4,6 +4,78 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <title>A Silly Story</title>
+
+    <style>
+        body {
+            font-family: "Helvetica", Arial, sans-serif;
+            background-color: #f3f3f3;
+            color: #000;
+            margin: 30px;
+            padding: 20px;
+            text-align: center;
+            line-height: 1.6;
+        }
+
+        div {
+            margin: 20px auto;
+            padding: 15px;
+        }
+
+        label {
+            font-size: 16px;
+            font-weight: bold;
+            color: #315477;
+            margin: 5px;
+        }
+
+        input {
+            padding: 10px;
+            margin: 8px;
+            border: 1px solid #9ba1a6;
+            border-radius: 0px;
+            font-size: 15px;
+        }
+
+        fieldset {
+            margin: 20px auto;
+            padding: 20px;
+            max-width: 400px;
+            border: 2px solid #3498db;
+            border-radius: 0px;
+            background-color: #ffffff;
+        }
+
+        legend {
+            font-size: 18px;
+            font-weight: bold;
+            color: #2c89c7;
+            padding: 5px;
+        }
+
+        button {
+            background-color: #3498db;
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 0px;
+            font-size: 16px;
+            cursor: pointer;
+            margin: 10px;
+        }
+
+        p {
+            background-color: #ffffff;
+            color: #334a61;
+            max-width: 600px;
+            margin: 25px auto;
+            padding: 20px;
+            border: 1px solid #b8c4ce;
+            border-radius: 0px;
+            font-size: 18px;
+            line-height: 1.8;
+            text-align: left;
+        }
+    </style>
   </head>
 
   <body>
@@ -40,9 +112,9 @@
         }
 
         // Raw text strings
-        const characters = ["Willy the Goblin", "Big Daddy", "Father Christmas"];
-        const places = ["the soup kitchen", "Disneyland", "the White House"];
-        const events = ["spontaneously combusted", "melted into a puddle on the sidewalk", "turned into a slug and slithered away"];
+        const characters = ["Big-Boned Billy", "Plus-Sized Pablo", "Full-Figured Finley"];
+        const places = ["the five-star resort", "the neighborhood pool", "the water park"];
+        const events = ["he got pushed into the pool by fifteen children", "he jumped into the water to cool off", "he dropped his food into the pool and had to dive in to save it"];
 
         // Willy the Goblin
         // Big Daddy
@@ -65,7 +137,7 @@
             const randomPlace = randomValueFromArray(places);
             const randomEvent = randomValueFromArray(events);
 
-            let storyText = `It was 94 Fahrenheit outside, so ${randomCharacter} went for a walk. When they got to ${randomPlace}, they stared in horror for a few moments, then ${randomEvent}. Bob saw the whole thing, but was not surprised — ${randomCharacter} weighs 300 pounds, and it was a hot day.`;
+            let storyText = `It was 94 Fahrenheit outside, so ${randomCharacter} went to the pool with friends. When they all got to ${randomPlace}, he ate a burger while his friends relaxed in the water for a few minutes. Then, ${randomEvent}. Bob got splashed even though he was sitting far from the water, but he was not surprised — ${randomCharacter} weighs 300 pounds, and when he jumps into the water, it's like a megatsunami.`;
 
             return storyText;
         }
@@ -85,9 +157,13 @@
             }
 
             if (document.getElementById("uk").checked) {
-                const weight = Math.round(300);
-                const temperature = Math.round(94);
+                const weight = Math.round(300 / 14) + " stone";
+                const temperature = Math.round((94 - 32) * 5 / 9) + " Celsius";
+
+                newStory = newStory.replace("300 pounds", weight);
+                newStory = newStory.replace("94 Fahrenheit", temperature);
             }
+
             console.log(newStory);
             // TODO: replace "" with the correct expression
             story.textContent = newStory;
