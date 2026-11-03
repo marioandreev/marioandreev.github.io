@@ -137,6 +137,7 @@
             }
             const json = await response.json();
             console.log(json['question']);
+            displayQuote(json['question']);
           } catch (err) {
             alert('Failed to fetch new quote');
           }
@@ -147,6 +148,7 @@
           quoteText.textContent = quote;
         }
 
+        getQuote();
       </script>
 </body>
 </html>
